@@ -30,3 +30,16 @@ graph TD
     VM3 -->|"access port · tag 20"| BR
     BR -->|"trunk · all tags"| VM1
 ```
+### Static routing between isolated networks
+
+VM1 also routes between two separate private networks (on different bridges), using a dedicated interface in each and static routes on the endpoints.
+
+```mermaid
+graph LR
+    VM2["VM2Network A192.168.50.101"]
+    VM1["VM1 — Routerens19 → 192.168.50.100 (Net A)ens20 → 192.168.60.1 (Net B)ip_forward enabled"]
+    VM3["VM3Network B192.168.60.103"]
+
+    VM2 ---|"vmbr1 · Network A"| VM1
+    VM1 ---|"vmbr2 · Network B"| VM3
+```
