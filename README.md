@@ -17,14 +17,14 @@ The lab implements two distinct routing scenarios on isolated virtual networks.
 
 ### Inter-VLAN routing (router on a stick)
 
-VM1 acts as a router, carrying both VLANs over a single trunk link and routing between them using tagged sub-interfaces one gateway per VLAN.
+VM1 acts as a router, carrying both VLANs over a single trunk link and routing between them using tagged sub-interfaces, one gateway per VLAN.
 
 ```mermaid
 graph TD
-    VM2["VM2 - VLAN 10 192.168.10.10"]
-    VM3["VM3 - VLAN 20 192.168.20.20"]
-    BR["vmbr3 VLAN aware bridge"]
-    VM1["VM1 - Router ens21.10 → 192.168.10.1 gateway ens21.20 → 192.168.20.1 gateway ip_forward enabled"]
+    VM2["VM2 - VLAN 10<br/>192.168.10.10"]
+    VM3["VM3 - VLAN 20<br/>192.168.20.20"]
+    BR["vmbr3<br/>VLAN-aware bridge"]
+    VM1["VM1 - Router<br/>ens21.10 → 192.168.10.1 (gateway)<br/>ens21.20 → 192.168.20.1 (gateway)<br/>ip_forward enabled"]
 
     VM2 -->|"access port · tag 10"| BR
     VM3 -->|"access port · tag 20"| BR
