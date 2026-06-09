@@ -24,7 +24,7 @@ graph TD
     VM2["VM2 - VLAN 10<br/>192.168.10.10"]
     VM3["VM3 - VLAN 20<br/>192.168.20.20"]
     BR["vmbr3<br/>VLAN-aware bridge"]
-    VM1["VM1 - Router<br/>ens21.10 → 192.168.10.1 gw<br/>ens21.20 → 192.168.20.1 gw<br/>ip_forward enabled"]
+    VM1["VM1 - Router<br/>ens21.10→192.168.10.1 gw<br/>ens21.20→192.168.20.1 gw<br/>ip_forward enabled"]
 
     VM2 -->|"access port · tag 10"| BR
     VM3 -->|"access port · tag 20"| BR
