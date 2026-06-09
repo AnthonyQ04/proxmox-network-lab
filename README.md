@@ -113,7 +113,7 @@ can only have one sensible "everything else" path.
 
 ### Boot hang on multi-interface VMs
 VMs with several interfaces hung on boot waiting for `systemd-networkd-wait-online`
-to bring every interface up. (Resolution in progress — relaxing the
+to bring every interface up. (Resolution in progress, relaxing the
 wait-online dependency so boot doesn't block on optional interfaces.)
 
 
