@@ -87,6 +87,35 @@ Tailscale (WireGuard-based mesh VPN) provides encrypted SSH access to the lab fr
 - NAT traversal concepts
 - Secure remote access without exposing services to the internet
 
+## Challenges & Troubleshooting
+
+Each milestone involved real debugging. A few worth highlighting:
+
+### Missing return route (static routing)
+Cross-network pings failed even with `ip_forward` enabled. The packets reached
+the destination, but replies had nowhere to go — the destination VM had no
+route back to the source's network. **Fix:** add a route on the endpoint
+pointing back through the router. This reinforced that routing must work in
+*both* directions — a one-way path silently drops replies.
+
+### Same-subnet VLAN gateways (inter-VLAN routing)
+My first attempt put both VLAN gateways in the same subnet. Routing failed
+because the router saw one network, not two — there was nothing to route
+between. **Fix:** give each VLAN its own subnet (one VLAN = one subnet). This
+clarified that VLANs segment at Layer 2 while subnets segment at Layer 3, and
+the two must align for inter-VLAN routing to work.
+
+### Competing default routes
+After connecting VMs to multiple networks, some had two default routes, causing
+unpredictable path selection. **Fix:** keep a single default route and convert
+the others into specific routes (e.g. `to: 192.168.60.0/24 via ...`). A host
+can only have one sensible "everything else" path.
+
+### Boot hang on multi-interface VMs
+VMs with several interfaces hung on boot waiting for `systemd-networkd-wait-online`
+to bring every interface up. (Resolution in progress — relaxing the
+wait-online dependency so boot doesn't block on optional interfaces.)
+
 
 
 
