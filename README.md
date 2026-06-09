@@ -116,6 +116,21 @@ VMs with several interfaces hung on boot waiting for `systemd-networkd-wait-onli
 to bring every interface up. (Resolution in progress, relaxing the
 wait-online dependency so boot doesn't block on optional interfaces.)
 
+## Roadmap
+
+Planned additions as the lab grows:
+
+- [x] Static routing between isolated networks
+- [x] Tailscale remote access
+- [x] VLAN segmentation & inter-VLAN routing (router on a stick)
+- [ ] Firewall rules (traffic filtering between segments)
+- [ ] OSPF dynamic routing (via FRR)
+- [ ] Migration to physical Cisco hardware for hands-on switch/router config
+
+---
+
+*Built and documented as part of developing hands-on networking and Linux
+skills. Work in progress.*
 
 
 
