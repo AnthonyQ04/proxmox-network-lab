@@ -89,14 +89,14 @@ Tailscale (WireGuard-based mesh VPN) provides encrypted SSH access to the lab fr
 
 ## Challenges & Troubleshooting
 
-Each milestone involved real debugging. A few worth highlighting:
+Each milestone involved debugging. A few worth highlighting:
 
 ### Missing return route (static routing)
 Cross-network pings failed even with `ip_forward` enabled. The packets reached
-the destination, but replies had nowhere to go — the destination VM had no
+the destination, but replies had nowhere to go, the destination VM had no
 route back to the source's network. **Fix:** add a route on the endpoint
 pointing back through the router. This reinforced that routing must work in
-*both* directions — a one-way path silently drops replies.
+*both* directions, a one-way path silently drops replies.
 
 ### Same-subnet VLAN gateways (inter-VLAN routing)
 My first attempt put both VLAN gateways in the same subnet. Routing failed
