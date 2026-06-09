@@ -36,9 +36,9 @@ VM1 also routes between two separate private networks (on different bridges), us
 
 ```mermaid
 graph LR
-    VM2["VM2Network A192.168.50.101"]
-    VM1["VM1 — Routerens19 → 192.168.50.100 (Net A)ens20 → 192.168.60.1 (Net B)ip_forward enabled"]
-    VM3["VM3Network B192.168.60.103"]
+    VM2["VM2<br/>Network A<br/>192.168.50.101"]
+    VM1["VM1 — Router<br/>ens19 → 192.168.50.100 Net A<br/>ens20 → 192.168.60.1 Net B<br/>ip_forward enabled"]
+    VM3["VM3<br/>Network B<br/>192.168.60.103"]
 
     VM2 ---|"vmbr1 · Network A"| VM1
     VM1 ---|"vmbr2 · Network B"| VM3
